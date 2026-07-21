@@ -1,0 +1,2 @@
+[console_scripts]
+spotcli = spot_cli.cli.app:app

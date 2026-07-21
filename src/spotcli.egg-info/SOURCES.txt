@@ -1,0 +1,17 @@
+pyproject.toml
+src/spotcli/__init__.py
+src/spotcli/__main__.py
+src/spotcli.egg-info/PKG-INFO
+src/spotcli.egg-info/SOURCES.txt
+src/spotcli.egg-info/dependency_links.txt
+src/spotcli.egg-info/entry_points.txt
+src/spotcli.egg-info/requires.txt
+src/spotcli.egg-info/top_level.txt
+src/spotcli/api/__init__.py
+src/spotcli/cli/__init__.py
+src/spotcli/cli/app.py
+src/spotcli/config/__init__.py
+src/spotcli/core/__init__.py
+src/spotcli/models/__init__.py
+src/spotcli/ui/__init__.py
+src/spotcli/utils/__init__.py
