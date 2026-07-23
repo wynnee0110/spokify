@@ -18,7 +18,7 @@ class SpotCLI(App):
 
     #body {
         layout: horizontal;
-        height: 1fr;
+        height: 2fr;
     }
 
     Sidebar {
@@ -27,7 +27,7 @@ class SpotCLI(App):
     }
 
     Content {
-        width: 1fr;
+        width: 10fr;
         border: solid blue;
     }
 
@@ -35,6 +35,30 @@ class SpotCLI(App):
         height: 3;
         border: solid white;
     }
+
+
+    Screen {
+    layout: vertical;
+}
+
+#body {
+    height: 1fr;   /* fill remaining space after header/player */
+}
+
+Sidebar {
+    width: 24;
+    border: solid green;
+}
+
+Content {
+    width: 1fr;    /* let it fill remaining horizontal space */
+    border: solid blue;
+}
+
+PlayerBar {
+    height: 3;
+    border: solid white;
+}
     """
 
     def compose(self) -> ComposeResult:
@@ -43,14 +67,19 @@ class SpotCLI(App):
         with Horizontal(id="body"):
             yield Sidebar(id="sidebar")
             yield Content(id="content")
-            yield PlayerBar(id="player")
+        yield PlayerBar(id="player")
 
     def on_mount(self):
         self.query_one("#sidebar").focus()
 
     @on(ListView.Selected)
     def sidebar_selected(self, event: ListView.Selected):
+        page = event.item.id
+        self.query_one(Content).show_page(page)
 
-        page = event.item.query_one(Label).renderable
+    @on(ListView.Highlighted)
+    def page_selected(self, event: ListView.Highlighted):
 
-        self.query_one(Content).show_page(str(page))
+      page = event.item.id
+
+      self.query_one("#content", Content).show_page(page)
